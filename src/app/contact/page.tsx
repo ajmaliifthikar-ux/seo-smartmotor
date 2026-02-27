@@ -4,12 +4,7 @@ import { Footer } from '@/components/v2/layout/footer'
 import { motion } from 'framer-motion'
 import { Phone, MapPin, Clock, Mail, MessageCircle, Navigation, ChevronRight } from 'lucide-react'
 import { BookingForm } from '@/components/v2/sections/booking-form'
-import dynamic from 'next/dynamic'
-
-const GoogleMapView = dynamic(
-    () => import('@/components/admin/analytics/google-map-view').then(mod => mod.GoogleMapView),
-    { ssr: false }
-)
+import { GoogleMapView } from './contact-client'
 
 export const metadata: Metadata = {
     title: 'Contact Smart Motor Auto Repair | Musaffah, Abu Dhabi',
