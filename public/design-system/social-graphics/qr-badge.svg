@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 240" width="500" height="240">
+  <defs>
+    <style>
+      .bg { fill: #121212; }
+      .stroke { fill: none; stroke: rgba(255,255,255,0.1); stroke-width: 2; }
+      .label { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.3em; fill: #E62329; }
+      .title { font-family: 'Inter', sans-serif; font-size: 32px; font-weight: 900; text-transform: uppercase; font-style: italic; letter-spacing: -0.02em; fill: #FFFFFF; }
+      .subtitle { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; fill: #A3A3A3; }
+      .qr-bg { fill: #FFFFFF; }
+      .qr-color { fill: #121212; }
+    </style>
+  </defs>
+  <g id="QR-Badge">
+    <rect x="10" y="10" width="480" height="220" rx="24" class="bg" />
+    <rect x="10" y="10" width="480" height="220" rx="24" class="stroke" />
+    <g id="Content" transform="translate(40, 50)">
+      <text x="0" y="0" class="label">INSTANT BOOKING</text>
+      <text x="0" y="40" class="title">SCAN TO</text>
+      <text x="0" y="75" class="title">RESERVE</text>
+      <text x="0" y="105" class="subtitle">Point your camera to book</text>
+      <text x="0" y="125" class="subtitle">your service instantly.</text>
+    </g>
+    <g id="QR-Code-Area" transform="translate(310, 30)">
+      <rect x="0" y="0" width="160" height="180" rx="16" class="qr-bg" />
+      <g transform="translate(30, 40) scale(4)">
+        <path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h2v2h-2zM17 13h4v4h-4zM13 17h4v4h-4zM19 17h2v4h-2zM5 5v4h4V5zM15 5v4h4V5zM5 15v4h4v-4z" class="qr-color"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Motor - Complete Design System</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Kufi+Arabic:wght@100..900&family=Noto+Sans+Arabic:wght@100..900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --brand-red: #E62329;
+            --brand-dark: #121212;
+            --brand-charcoal: #1A1A1A;
+            --bg-primary: #FAFAF9;
+            --bg-secondary: #F4F3F1;
+            --bg-tertiary: #ECECEA;
+            --text-primary: #121212;
+            --text-secondary: #666666;
+            --text-muted: #A3A3A3;
+            --success: #10B981;
+            --error: #EF4444;
+            --font-primary: 'Inter', -apple-system, sans-serif;
+            --font-arabic-heading: 'Tajawal', sans-serif;
+            --font-arabic-body: 'Noto Sans Arabic', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: var(--font-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+        /* Sidebar Navigation */
+        .sidebar { position: fixed; top: 0; left: 0; width: 280px; height: 100vh; background: var(--brand-dark); color: white; padding: 40px 20px; overflow-y: auto; z-index: 100; border-right: 1px solid rgba(255,255,255,0.05); }
+        .sidebar-logo { width: 140px; margin-bottom: 40px; filter: brightness(0) invert(1); }
+        .nav-item { display: block; color: var(--text-muted); text-decoration: none; padding: 12px 16px; border-radius: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; transition: all 0.2s; margin-bottom: 4px; }
+        .nav-item:hover, .nav-item.active { background: rgba(255,255,255,0.1); color: white; }
+
+        .main-content { margin-left: 280px; padding: 60px 80px; max-width: 1400px; }
+
+        /* Section Styling */
+        .section-header { margin-bottom: 40px; padding-bottom: 20px; border-bottom: 2px solid var(--bg-tertiary); }
+        .section-header h2 { font-size: 36px; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; }
+        .section-header p { color: var(--text-secondary); font-size: 16px; margin-top: 8px; }
+        section { margin-bottom: 120px; scroll-margin-top: 40px; }
+
+        /* Rule Blocks */
+        .rules-container { background: rgba(244, 243, 241, 0.8); border: 1px solid var(--bg-tertiary); border-left: 4px solid var(--brand-red); border-radius: 8px; padding: 24px; margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+        .rules-column h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .rules-column.dos h4 { color: var(--success); }
+        .rules-column.donts h4 { color: var(--error); }
+        .rules-list { list-style: none; }
+        .rules-list li { font-size: 14px; color: var(--text-secondary); margin-bottom: 10px; position: relative; padding-left: 24px; }
+        .rules-column.dos .rules-list li::before { content: "✓"; position: absolute; left: 0; color: var(--success); font-weight: 900; }
+        .rules-column.donts .rules-list li::before { content: "×"; position: absolute; left: 0; color: var(--error); font-weight: 900; font-size: 18px; }
+
+        /* Color Grid */
+        .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; }
+        .color-card { border-radius: 12px; overflow: hidden; border: 1px solid var(--bg-tertiary); background: white; }
+        .color-swatch { height: 100px; width: 100%; }
+        .color-info { padding: 12px; }
+        .color-name { font-weight: 700; font-size: 13px; margin-bottom: 2px; }
+        .color-hex { font-family: monospace; color: var(--text-secondary); font-size: 11px; }
+
+        /* Typography */
+        .type-showcase { background: white; border: 1px solid var(--bg-tertiary); border-radius: 16px; padding: 40px; margin-bottom: 24px; }
+        .type-row { display: flex; align-items: baseline; margin-bottom: 30px; padding-bottom: 30px; border-bottom: 1px solid var(--bg-secondary); }
+        .type-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+        .type-label { width: 180px; flex-shrink: 0; font-size: 10px; font-weight: 900; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; }
+        .type-sample h1 { font-size: 72px; font-weight: 900; line-height: 1; letter-spacing: -0.04em; text-transform: uppercase; font-style: italic; color: var(--brand-dark); }
+        .type-sample h2 { font-size: 48px; font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; text-transform: uppercase; }
+        .type-sample h3 { font-size: 32px; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+        .type-sample p.large { font-size: 18px; color: var(--text-secondary); }
+        .type-sample .micro { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; color: var(--brand-red); }
+        .rtl-sample { direction: rtl; text-align: right; font-family: var(--font-arabic-heading); }
+
+        /* Logos */
+        .logo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .logo-card { background: white; border: 1px solid var(--bg-tertiary); border-radius: 16px; padding: 50px 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; }
+        .logo-card.dark-bg { background: var(--brand-dark); color: white; border-color: var(--brand-dark); }
+        .logo-card img { max-width: 100%; height: auto; margin-bottom: 24px; }
+        .clear-space-guide { position: absolute; top: 25px; left: 25px; right: 25px; bottom: 25px; border: 1px dashed rgba(230, 35, 41, 0.4); pointer-events: none; }
+        .clear-space-guide::after { content: "50% Height Clear Zone"; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--bg-primary); color: var(--brand-red); font-size: 9px; font-weight: 900; padding: 2px 6px; text-transform: uppercase; }
+        .logo-card.dark-bg .clear-space-guide::after { background: var(--brand-dark); }
+
+        /* Social Icons */
+        .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+        .social-set { background: white; border: 1px solid var(--bg-tertiary); border-radius: 16px; padding: 32px; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+        .social-set.dark-bg { background: var(--brand-dark); color: white; border-color: var(--brand-dark); }
+        .social-set-title { font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; }
+        .social-row { display: flex; gap: 12px; }
+        .icon-circle { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+        .icon-circle svg { width: 20px; height: 20px; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .icon-dark { background: var(--brand-dark); } .icon-dark svg { stroke: white; } .icon-dark:hover { background: var(--brand-red); transform: scale(1.1); }
+        .icon-red { background: var(--brand-red); } .icon-red svg { stroke: white; } .icon-red:hover { background: var(--brand-dark); transform: scale(1.1); }
+        .icon-light { background: white; border: 1px solid var(--bg-tertiary); } .icon-light svg { stroke: var(--brand-dark); } .icon-light:hover { border-color: var(--brand-red); transform: scale(1.1); }
+        .icon-outline-white { background: transparent; border: 1px solid rgba(255,255,255,0.2); } .icon-outline-white svg { stroke: white; } .icon-outline-white:hover { border-color: white; transform: scale(1.1); }
+
+        /* Carbon Fiber Material */
+        .carbon-fiber { 
+            background: 
+                linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+                linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+                linear-gradient(27deg, #1b1b1b 5px, transparent 5px) 0px 10px,
+                linear-gradient(207deg, #1b1b1b 5px, transparent 5px) 10px 5px,
+                linear-gradient(90deg, #111 10px, transparent 10px),
+                linear-gradient(#1a1a1a 25%, #151515 25%, #151515 50%, transparent 50%, transparent 75%, #1d1d1d 75%, #1d1d1d);
+            background-color: #131313;
+            background-size: 20px 20px;
+        }
+
+        /* ------------------------------------------- */
+        /* NEW: Social Media Post Elements             */
+        /* ------------------------------------------- */
+        .sm-showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+        .sm-component-box { background: #e5e5e5; padding: 40px; border-radius: 16px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+        
+        /* 1. Callout */
+        .sm-callout { display: inline-flex; flex-direction: column; background: var(--brand-dark); color: white; padding: 20px 32px; border-left: 6px solid var(--brand-red); box-shadow: 20px 20px 0 rgba(230, 35, 41, 0.1); transform: skew(-5deg); }
+        .sm-callout > * { transform: skew(5deg); }
+        .sm-callout-label { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.3em; color: var(--brand-red); margin-bottom: 4px; }
+        .sm-callout-value { font-size: 40px; font-weight: 900; font-style: italic; line-height: 1; letter-spacing: -0.04em; }
+
+        /* 2. Footer Strip */
+        .sm-footer-strip { display: flex; align-items: center; justify-content: space-between; background: var(--brand-dark); border-radius: 100px; padding: 12px 16px 12px 32px; color: white; width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+        .sm-footer-brand { font-size: 14px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center; gap: 12px; }
+        .sm-footer-brand::after { content: ""; display: block; width: 1px; height: 20px; background: rgba(255,255,255,0.2); }
+        .sm-footer-contact { font-size: 14px; font-weight: 700; letter-spacing: 0.05em; }
+        .sm-footer-cta { background: var(--brand-red); color: white; padding: 12px 24px; border-radius: 100px; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; }
+
+        /* 3. Specs */
+        .sm-spec-grid { display: flex; gap: 16px; }
+        .sm-spec-badge { background: var(--bg-primary); border: 1px solid #ECECEA; padding: 16px 24px; border-radius: 12px; min-width: 140px; position: relative; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .sm-spec-badge::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--brand-red); }
+        .sm-spec-label { font-size: 9px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); margin-bottom: 4px; }
+        .sm-spec-value { font-size: 24px; font-weight: 900; color: var(--brand-dark); letter-spacing: -0.02em; }
+
+        /* 4. QR Card */
+        .sm-qr-card { display: flex; background: var(--brand-dark); border-radius: 24px; overflow: hidden; width: max-content; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .sm-qr-content { padding: 32px; display: flex; flex-direction: column; justify-content: center; }
+        .sm-qr-title { font-size: 20px; font-weight: 900; text-transform: uppercase; color: white; font-style: italic; letter-spacing: -0.02em; margin-bottom: 8px; }
+        .sm-qr-subtitle { font-size: 11px; color: var(--text-muted); font-weight: 500; max-width: 160px; line-height: 1.5; }
+        .sm-qr-box { background: white; padding: 20px; display: flex; align-items: center; justify-content: center; }
+        .sm-qr-img { width: 100px; height: 100px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h2v2h-2zM17 13h4v4h-4zM13 17h4v4h-4zM19 17h2v4h-2zM5 5v4h4V5zM15 5v4h4V5zM5 15v4h4v-4z" fill="%23121212"/></svg>') center/cover; }
+
+        /* ------------------------------------------- */
+
+        /* Icon Library */
+        .library-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; margin-top: 24px; }
+        .lib-card { background: white; border: 1px solid #eee; border-radius: 12px; padding: 16px; text-align: center; transition: all 0.2s; cursor: pointer; }
+        .lib-card:hover { transform: translateY(-4px); border-color: var(--brand-red); }
+        .lib-card img { width: 40px; height: 40px; object-fit: contain; margin-bottom: 8px; }
+        .lib-name { font-size: 9px; font-weight: 700; text-transform: uppercase; color: #888; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .pagination-ctrl { display: flex; justify-content: center; gap: 12px; margin-top: 40px; align-items: center; }
+
+        .btn { display: inline-flex; padding: 12px 24px; border-radius: 100px; font-size: 11px; font-weight: 900; text-transform: uppercase; cursor: pointer; border: 2px solid var(--bg-tertiary); background: transparent; transition: all 0.2s; }
+        .btn.active { background: var(--brand-dark); color: white; border-color: var(--brand-dark); }
+        .btn:hover:not(.active) { border-color: var(--brand-dark); }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <img src="../../public/branding/logo.png" alt="Logo" class="sidebar-logo invert-logo" onerror="this.src='../assets/Logo/logo.png'">
+        <nav>
+            <a href="#colors" class="nav-item">1. Brand Colors</a>
+            <a href="#typography" class="nav-item">2. Typography System</a>
+            <a href="#logos" class="nav-item">3. Logos & Clear Space</a>
+            <a href="#social" class="nav-item">4. Social Ecosystem</a>
+            <a href="#post-elements" class="nav-item active" style="color:white;">5. Post Graphics & Calls-to-Action</a>
+            <a href="#icon-library" class="nav-item">6. Universal Icon Library</a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+
+        <!-- PREVIOUS SECTIONS OMITTED FOR BREVITY, WILL INJECT VIA SCRIPT IN JS BUT LET'S KEEP IT IN HTML FOR PERMANENCE -->
+        
+        <!-- POST GRAPHICS & CALLS-TO-ACTION (NEW) -->
+        <section id="post-elements">
+            <div class="section-header">
+                <h2>5. Post Graphics & Calls-to-Action</h2>
+                <p>Standardized visual elements for social media posts, banners, and digital flyers.</p>
+            </div>
+            
+            <div class="sm-showcase-grid">
+                
+                <!-- Callout -->
+                <div>
+                    <h4 style="font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; color: var(--text-secondary);">A. Impact Callout (Pricing/Offer)</h4>
+                    <div class="sm-component-box">
+                        <div class="sm-callout">
+                            <div class="sm-callout-label">Limited Time Offer</div>
+                            <div class="sm-callout-value">AED 1,499</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QR Card -->
+                <div>
+                    <h4 style="font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; color: var(--text-secondary);">B. Scan-to-Book QR Badge</h4>
+                    <div class="sm-component-box" style="background: url('../assets/textures/wall-concrete.jpg') center/cover;">
+                        <div class="sm-qr-card carbon-fiber">
+                            <div class="sm-qr-content">
+                                <div class="sm-callout-label" style="margin-bottom: 8px;">Instant Booking</div>
+                                <div class="sm-qr-title">Scan To<br>Reserve</div>
+                                <div class="sm-qr-subtitle">Point your camera to book your service instantly.</div>
+                            </div>
+                            <div class="sm-qr-box">
+                                <div class="sm-qr-img"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spec Grid -->
+                <div style="grid-column: span 2;">
+                    <h4 style="font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; color: var(--text-secondary);">C. Technical Spec Badges</h4>
+                    <div class="sm-component-box">
+                        <div class="sm-spec-grid">
+                            <div class="sm-spec-badge">
+                                <div class="sm-spec-label">Protection</div>
+                                <div class="sm-spec-value">9H Nano</div>
+                            </div>
+                            <div class="sm-spec-badge">
+                                <div class="sm-spec-label">Warranty</div>
+                                <div class="sm-spec-value">5 Years</div>
+                            </div>
+                            <div class="sm-spec-badge">
+                                <div class="sm-spec-label">Turnaround</div>
+                                <div class="sm-spec-value">24 Hours</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Strip -->
+                <div style="grid-column: span 2;">
+                    <h4 style="font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; color: var(--text-secondary);">D. Social Post Footer Strip</h4>
+                    <div class="sm-component-box">
+                        <div class="sm-footer-strip">
+                            <div class="sm-footer-brand">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                                Smart Motor
+                            </div>
+                            <div class="sm-footer-contact">800 76278 &nbsp; | &nbsp; smartmotor.ae</div>
+                            <div class="sm-footer-cta">Book Now</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rules-container">
+                <div class="rules-column dos">
+                    <h4>Do</h4>
+                    <ul class="rules-list">
+                        <li>Use the -5deg skew on "Impact Callouts" to convey speed and automotive performance.</li>
+                        <li>Place the Footer Strip at the absolute bottom of vertical (9:16) Instagram Reels or TikToks.</li>
+                        <li>Ensure the QR code background remains pure white so it scans easily against the dark card.</li>
+                    </ul>
+                </div>
+                <div class="rules-column donts">
+                    <h4>Don't</h4>
+                    <ul class="rules-list">
+                        <li>Do not skew the internal text of the callout. Use the CSS `transform: skew(5deg)` on the child element to counter the parent's `-5deg` skew.</li>
+                        <li>Do not stretch the QR code card to full width; let it hug its content.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ICON LIBRARY -->
+        <section id="icon-library">
+            <div class="section-header">
+                <h2>6. Universal Icon Library</h2>
+                <p>Paginated view of all Car Brand, Tech, and Automotive icons.</p>
+            </div>
+            <div style="display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap;">
+                <button class="btn active" onclick="filterIcons('all', this)">All Icons</button>
+                <button class="btn" onclick="filterIcons('car brand', this)">Car Brands</button>
+                <button class="btn" onclick="filterIcons('Automotive-Icons', this)">Automotive</button>
+                <button class="btn" onclick="filterIcons('All Apps & Techs', this)">Tech Stack</button>
+            </div>
+            <div class="library-grid" id="icon-output"></div>
+            <div class="pagination-ctrl">
+                <button class="btn" onclick="movePage(-1)">Previous</button>
+                <span id="page-label" style="font-weight:900; font-size:12px;">PAGE 1</span>
+                <button class="btn" onclick="movePage(1)">Next Page</button>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        const ICONS = ["../assets/Icon Libraries/All Apps & Techs/AI LLMs/Anthropic.png", "../assets/Icon Libraries/All Apps & Techs/AI LLMs/Anthropic.svg", "../assets/Icon Libraries/All Apps & Techs/AI LLMs/Claude.png", "../assets/Icon Libraries/All Apps & Techs/AI LLMs/Claude.svg", "../assets/Icon Libraries/All Apps & Techs/AI LLMs/Google Gemini.png", "../assets/Icon Libraries/All Apps & Techs/AI LLMs/Google Gemini.svg", "../assets/Icon Libraries/All Apps & Techs/AI LLMs/Google PaLM.png", "../assets/Icon Libraries/All Apps & Techs/AI LLMs/Google PaLM.svg", "../assets/Icon Libraries/All Apps & Techs/AI LLMs/Hugging Face.png", "../assets/Icon Libraries/All Apps & Techs/AI LLMs/Hugging Face.svg", "../assets/Icon Libraries/All Apps & Techs/AI LLMs/Midjourney-1.png", "../assets/Icon Libraries/All Apps & Techs/AI LLMs/Midjourney-1.svg", "../assets/Icon Libraries/All Apps & Techs/AI LLMs/Midjourney.png", "../assets/Icon Libraries/All Apps & Techs/AI LLMs/Midjourney.svg", "../assets/Icon Libraries/All Apps & Techs/Hardware/AMD.png", "../assets/Icon Libraries/All Apps & Techs/Hardware/AMD.svg", "../assets/Icon Libraries/All Apps & Techs/Hardware/Arduino.png", "../assets/Icon Libraries/All Apps & Techs/Hardware/Arduino.svg", "../assets/Icon Libraries/All Apps & Techs/Hardware/Bluetooth.png", "../assets/Icon Libraries/All Apps & Techs/Hardware/Bluetooth.svg", "../assets/Icon Libraries/All Apps & Techs/Hardware/Dell.png", "../assets/Icon Libraries/All Apps & Techs/Hardware/Dell.svg", "../assets/Icon Libraries/All Apps & Techs/Hardware/General Electric.png", "../assets/Icon Libraries/All Apps & Techs/Hardware/General Electric.svg", "../assets/Icon Libraries/All Apps & Techs/Hardware/IBM.png", "../assets/Icon Libraries/All Apps & Techs/Hardware/IBM.svg", "../assets/Icon Libraries/All Apps & Techs/Hardware/Raspberry-pi.png", "../assets/Icon Libraries/All Apps & Techs/Hardware/Raspberry-pi.svg", "../assets/Icon Libraries/All Apps & Techs/Hardware/huawei.png", "../assets/Icon Libraries/All Apps & Techs/Hardware/huawei.svg", "../assets/Icon Libraries/All Apps & Techs/Hardware/intel.png", "../assets/Icon Libraries/All Apps & Techs/Hardware/intel.svg", "../assets/Icon Libraries/All Apps & Techs/Hosting/AWS.png", "../assets/Icon Libraries/All Apps & Techs/Hosting/AWS.svg", "../assets/Icon Libraries/All Apps & Techs/Hosting/Azure.png", "../assets/Icon Libraries/All Apps & Techs/Hosting/Azure.svg", "../assets/Icon Libraries/All Apps & Techs/Hosting/Digital Ocean.png", "../assets/Icon Libraries/All Apps & Techs/Hosting/Digital Ocean.svg", "../assets/Icon Libraries/All Apps & Techs/Hosting/Heroku.png", "../assets/Icon Libraries/All Apps & Techs/Hosting/Heroku.svg", "../assets/Icon Libraries/All Apps & Techs/Hosting/Linode.png", "../assets/Icon Libraries/All Apps & Techs/Hosting/Linode.svg", "../assets/Icon Libraries/All Apps & Techs/Hosting/Rackspace.png", "../assets/Icon Libraries/All Apps & Techs/Hosting/Rackspace.svg", "../assets/Icon Libraries/All Apps & Techs/Hosting/Vercel.png", "../assets/Icon Libraries/All Apps & Techs/Hosting/Vercel.svg", "../assets/Icon Libraries/All Apps & Techs/Operating Systems/Tech Icons (Community).png", "../assets/Icon Libraries/All Apps & Techs/Operating Systems/Tech Icons (Community).svg", "../assets/Icon Libraries/Automotive-Icons/ABS Material Rounded.png", "../assets/Icon Libraries/Automotive-Icons/Accessories .png", "../assets/Icon Libraries/Automotive-Icons/Accu  (1).png", "../assets/Icon Libraries/Automotive-Icons/Accu .png", "../assets/Icon Libraries/Automotive-Icons/Air Conditioner iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Angle Grinder Material Outlined.png", "../assets/Icon Libraries/Automotive-Icons/Angle Grinder Material Rounded.png", "../assets/Icon Libraries/Automotive-Icons/Angle Grinder Material Sharp.png", "../assets/Icon Libraries/Automotive-Icons/Angle Grinder iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Angle Grinder iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Approval Apple SF Black Filled.png", "../assets/Icon Libraries/Automotive-Icons/Approval Color.png", "../assets/Icon Libraries/Automotive-Icons/Approval Forma Regular Filled.png", "../assets/Icon Libraries/Automotive-Icons/Approval Glassmorphism.png", "../assets/Icon Libraries/Automotive-Icons/Approval Skeuomorphism.png", "../assets/Icon Libraries/Automotive-Icons/Approval Tiny Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Approval iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Automatic Car Wash Badges.png", "../assets/Icon Libraries/Automotive-Icons/Automatic Car Wash iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Automation iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Automation iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Automotive .png", "../assets/Icon Libraries/Automotive-Icons/Automotive iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Barometer iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Belt .png", "../assets/Icon Libraries/Automotive-Icons/Bicycle Fork Dotted.png", "../assets/Icon Libraries/Automotive-Icons/Bicycle Seatpost Dotted.png", "../assets/Icon Libraries/Automotive-Icons/CO2 Gauge iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Cab Back View iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Cab Service iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Cab iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Car Badge Material Rounded.png", "../assets/Icon Libraries/Automotive-Icons/Car Battery Deco Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Car Battery Forma Regular Filled.png", "../assets/Icon Libraries/Automotive-Icons/Car Battery Material Filled.png", "../assets/Icon Libraries/Automotive-Icons/Car Battery Material Rounded.png", "../assets/Icon Libraries/Automotive-Icons/Car Battery Puffy Filled.png", "../assets/Icon Libraries/Automotive-Icons/Car Battery iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Car Cleaning Badges.png", "../assets/Icon Libraries/Automotive-Icons/Car Cleaning Pulsar Line.png", "../assets/Icon Libraries/Automotive-Icons/Car Cleaning iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Car Door Material Rounded.png", "../assets/Icon Libraries/Automotive-Icons/Car Door iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Car Fire iOS 17 Outlined.png", "../assets/Icon Libraries/Automotive-Icons/Car Forma Light Filled.png", "../assets/Icon Libraries/Automotive-Icons/Car Forma Light.png", "../assets/Icon Libraries/Automotive-Icons/Car Forma Regular.png", "../assets/Icon Libraries/Automotive-Icons/Car Forma Thin.png", "../assets/Icon Libraries/Automotive-Icons/Car Headlights Material Rounded.png", "../assets/Icon Libraries/Automotive-Icons/Car Insurance iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Car Production iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Car Production iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Car Puffy Filled.png", "../assets/Icon Libraries/Automotive-Icons/Car Puffy Outline.png", "../assets/Icon Libraries/Automotive-Icons/Car Racing Material Sharp.png", "../assets/Icon Libraries/Automotive-Icons/Car Rental Windows 11 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Car Rental iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Car Seat iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Car Seat iOS 17 Outlined.png", "../assets/Icon Libraries/Automotive-Icons/Car Service Windows 11 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Car Service iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Car Theft iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Car Wipers iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Carbon Brush Material Sharp.png", "../assets/Icon Libraries/Automotive-Icons/Carbon Brush iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Carpark iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Carpool iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Computer Support Windows 11 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Delete car Windows 11 Outline.png", "../assets/Icon Libraries/Automotive-Icons/Disc Break .png", "../assets/Icon Libraries/Automotive-Icons/Distance Warning Material Rounded.png", "../assets/Icon Libraries/Automotive-Icons/Drill iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Driving iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Dump Truck Windows 11 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Electromobile Material Rounded.png", "../assets/Icon Libraries/Automotive-Icons/Engine .png", "../assets/Icon Libraries/Automotive-Icons/Engine Forma Bold Filled Sharp.png", "../assets/Icon Libraries/Automotive-Icons/Engine Forma Bold Filled.png", "../assets/Icon Libraries/Automotive-Icons/Engine Oil iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Engine Oil iOS 17 Outlined.png", "../assets/Icon Libraries/Automotive-Icons/Engine Puffy Filled.png", "../assets/Icon Libraries/Automotive-Icons/Exhaust .png", "../assets/Icon Libraries/Automotive-Icons/First Place Ribbon Ink.png", "../assets/Icon Libraries/Automotive-Icons/Flat Tire Material Rounded.png", "../assets/Icon Libraries/Automotive-Icons/Flat Tire Material Sharp (1).png", "../assets/Icon Libraries/Automotive-Icons/Flat Tire Material Sharp.png", "../assets/Icon Libraries/Automotive-Icons/Flat Tire iOS 17 Filled (1).png", "../assets/Icon Libraries/Automotive-Icons/Flat Tire iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Flat Tire iOS 17 Outlined.png", "../assets/Icon Libraries/Automotive-Icons/Flood Car Windows 10.png", "../assets/Icon Libraries/Automotive-Icons/Front gear .png", "../assets/Icon Libraries/Automotive-Icons/Garage Material Sharp.png", "../assets/Icon Libraries/Automotive-Icons/Garage Windows 11 Outline.png", "../assets/Icon Libraries/Automotive-Icons/Garage iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Gasket .png", "../assets/Icon Libraries/Automotive-Icons/Gear Forma Light Filled Sharp.png", "../assets/Icon Libraries/Automotive-Icons/Gear Forma Regular Filled Sharp.png", "../assets/Icon Libraries/Automotive-Icons/Gear Forma Regular Sharp.png", "../assets/Icon Libraries/Automotive-Icons/Gear Forma Thin Filled Sharp.png", "../assets/Icon Libraries/Automotive-Icons/Gear Forma Thin Sharp.png", "../assets/Icon Libraries/Automotive-Icons/Gear Puffy Filled.png", "../assets/Icon Libraries/Automotive-Icons/Gear Puffy Outline.png", "../assets/Icon Libraries/Automotive-Icons/Gear Tiny Bold.png", "../assets/Icon Libraries/Automotive-Icons/Grinding Machine iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Grinding Machine iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Guarantee Puffy Filled.png", "../assets/Icon Libraries/Automotive-Icons/Half Track iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Handbreak .png", "../assets/Icon Libraries/Automotive-Icons/Headlamp .png", "../assets/Icon Libraries/Automotive-Icons/High Risk iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Home Windows 11 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Horn .png", "../assets/Icon Libraries/Automotive-Icons/Hover Car iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Hybrid Material Rounded.png", "../assets/Icon Libraries/Automotive-Icons/Hybrid iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Jeep Wrangler iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Lease iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Limousine iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/List Of Parts Windows 11 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Marker off iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Motor Vehicle Material Two Tone.png", "../assets/Icon Libraries/Automotive-Icons/Motor Vehicle iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Open Parcel Material Rounded.png", "../assets/Icon Libraries/Automotive-Icons/Packing Material Rounded.png", "../assets/Icon Libraries/Automotive-Icons/Parking and 1st Floor iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Parking and 2nd Floor iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/People in Car iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Phone iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Pliers Windows 11 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Pliers iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Police Car iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Pressure .png", "../assets/Icon Libraries/Automotive-Icons/Pressure iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Pressure iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Race Car Material Outlined.png", "../assets/Icon Libraries/Automotive-Icons/Race Car Material Sharp.png", "../assets/Icon Libraries/Automotive-Icons/Race Car iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Radiator .png", "../assets/Icon Libraries/Automotive-Icons/Roller Shaft Bending iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Security Energy Material Rounded.png", "../assets/Icon Libraries/Automotive-Icons/Security Energy Material Sharp.png", "../assets/Icon Libraries/Automotive-Icons/Security Energy Windows 10.png", "../assets/Icon Libraries/Automotive-Icons/Sedan iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Semi Truck iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Send Package Windows 11 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Service iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Ski Vehicle iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Sock Absorber .png", "../assets/Icon Libraries/Automotive-Icons/Speed iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Speed iOS 17 Outlined.png", "../assets/Icon Libraries/Automotive-Icons/Stack Light iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Star Windows 11 Color.png", "../assets/Icon Libraries/Automotive-Icons/Sustainable Energy iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Taxi Back View iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Taxi Service iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Taxicab iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Temperature Inside iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Temperature Outside iOS 17 Outlined.png", "../assets/Icon Libraries/Automotive-Icons/Tesla Model X iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Tick Box Forma Bold Filled.png", "../assets/Icon Libraries/Automotive-Icons/Tick Box Puffy Outline.png", "../assets/Icon Libraries/Automotive-Icons/Tire Track iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Tow Truck iOS 17 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Tow Truck iOS 17 Outlined.png", "../assets/Icon Libraries/Automotive-Icons/Traction Control Material Filled.png", "../assets/Icon Libraries/Automotive-Icons/Traction Control iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Traffic Accident Windows 11 Filled.png", "../assets/Icon Libraries/Automotive-Icons/Turbo .png", "../assets/Icon Libraries/Automotive-Icons/Warehouse .png", "../assets/Icon Libraries/Automotive-Icons/Washer Fluid iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Weighbridge iOS 17 Glyph.png", "../assets/Icon Libraries/Automotive-Icons/Wheel .png", "../assets/Icon Libraries/car brand icons png/9ff.png", "../assets/Icon Libraries/car brand icons png/ABT.png", "../assets/Icon Libraries/car brand icons png/AC.png", "../assets/Icon Libraries/car brand icons png/AMG.png", "../assets/Icon Libraries/car brand icons png/ARO.png", "../assets/Icon Libraries/car brand icons png/Abadal.png", "../assets/Icon Libraries/car brand icons png/Abarth.png", "../assets/Icon Libraries/car brand icons png/Acura.png", "../assets/Icon Libraries/car brand icons png/Aixam.png", "../assets/Icon Libraries/car brand icons png/Alfa Romeo.png", "../assets/Icon Libraries/car brand icons png/Alpina.png", "../assets/Icon Libraries/car brand icons png/Alpine.png", "../assets/Icon Libraries/car brand icons png/Alvis.png", "../assets/Icon Libraries/car brand icons png/American Motors.png", "../assets/Icon Libraries/car brand icons png/Apollo.png", "../assets/Icon Libraries/car brand icons png/Arash.png", "../assets/Icon Libraries/car brand icons png/Arcfox.png", "../assets/Icon Libraries/car brand icons png/Ariel.png", "../assets/Icon Libraries/car brand icons png/Arrinera.png", "../assets/Icon Libraries/car brand icons png/Arrival.png", "../assets/Icon Libraries/car brand icons png/Artega.png", "../assets/Icon Libraries/car brand icons png/Ascari.png", "../assets/Icon Libraries/car brand icons png/Askam.png", "../assets/Icon Libraries/car brand icons png/Aspark.png", "../assets/Icon Libraries/car brand icons png/Aston Martin.png", "../assets/Icon Libraries/car brand icons png/Atalanta Motors.png", "../assets/Icon Libraries/car brand icons png/Audi.png", "../assets/Icon Libraries/car brand icons png/Austin.png", "../assets/Icon Libraries/car brand icons png/Autobacs.png", "../assets/Icon Libraries/car brand icons png/Autobianchi.png", "../assets/Icon Libraries/car brand icons png/Axon.png", "../assets/Icon Libraries/car brand icons png/BAC.png", "../assets/Icon Libraries/car brand icons png/BAIC Motor.png", "../assets/Icon Libraries/car brand icons png/BMW M.png", "../assets/Icon Libraries/car brand icons png/BMW.png", "../assets/Icon Libraries/car brand icons png/BYD.png", "../assets/Icon Libraries/car brand icons png/Baojun.png", "../assets/Icon Libraries/car brand icons png/Beiben.png", "../assets/Icon Libraries/car brand icons png/Bentley.png", "../assets/Icon Libraries/car brand icons png/Berliet.png", "../assets/Icon Libraries/car brand icons png/Bertone.png", "../assets/Icon Libraries/car brand icons png/Bestune.png", "../assets/Icon Libraries/car brand icons png/BharatBenz.png", "../assets/Icon Libraries/car brand icons png/Bitter.png", "../assets/Icon Libraries/car brand icons png/Borgward.png", "../assets/Icon Libraries/car brand icons png/Bowler.png", "../assets/Icon Libraries/car brand icons png/Brabus.png", "../assets/Icon Libraries/car brand icons png/Brammo.png", "../assets/Icon Libraries/car brand icons png/Brilliance.png", "../assets/Icon Libraries/car brand icons png/Brooke.png", "../assets/Icon Libraries/car brand icons png/Bufori.png", "../assets/Icon Libraries/car brand icons png/Bugatti.png", "../assets/Icon Libraries/car brand icons png/Buick.png", "../assets/Icon Libraries/car brand icons png/Byton.png", "../assets/Icon Libraries/car brand icons png/Cadillac.png", "../assets/Icon Libraries/car brand icons png/Camc.png", "../assets/Icon Libraries/car brand icons png/Canoo.png", "../assets/Icon Libraries/car brand icons png/Caparo.png", "../assets/Icon Libraries/car brand icons png/Carlsson.png", "../assets/Icon Libraries/car brand icons png/Caterham.png", "../assets/Icon Libraries/car brand icons png/Changan.png", "../assets/Icon Libraries/car brand icons png/Changfeng.png", "../assets/Icon Libraries/car brand icons png/Chery.png", "../assets/Icon Libraries/car brand icons png/Chevrolet.png", "../assets/Icon Libraries/car brand icons png/Chrysler.png", "../assets/Icon Libraries/car brand icons png/Citroen.png", "../assets/Icon Libraries/car brand icons png/Cizeta.png", "../assets/Icon Libraries/car brand icons png/Corvette.png", "../assets/Icon Libraries/car brand icons png/DAF.png", "../assets/Icon Libraries/car brand icons png/DINA.png", "../assets/Icon Libraries/car brand icons png/DS.png", "../assets/Icon Libraries/car brand icons png/Dacia.png", "../assets/Icon Libraries/car brand icons png/Daewoo.png", "../assets/Icon Libraries/car brand icons png/Daihatsu.png", "../assets/Icon Libraries/car brand icons png/Daimler.png", "../assets/Icon Libraries/car brand icons png/Datsun.png", "../assets/Icon Libraries/car brand icons png/David Brown.png", "../assets/Icon Libraries/car brand icons png/Dayun.png", "../assets/Icon Libraries/car brand icons png/Delage.png", "../assets/Icon Libraries/car brand icons png/Desoto.png", "../assets/Icon Libraries/car brand icons png/Detroit Electric.png", "../assets/Icon Libraries/car brand icons png/Devel Sixteen.png", "../assets/Icon Libraries/car brand icons png/Dodge.png", "../assets/Icon Libraries/car brand icons png/Dongfeng.png", "../assets/Icon Libraries/car brand icons png/Donkervoort.png", "../assets/Icon Libraries/car brand icons png/Drako.png", "../assets/Icon Libraries/car brand icons png/Duesenberg.png", "../assets/Icon Libraries/car brand icons png/EDAG.png", "../assets/Icon Libraries/car brand icons png/ERF.png", "../assets/Icon Libraries/car brand icons png/Eagle.png", "../assets/Icon Libraries/car brand icons png/Edsel.png", "../assets/Icon Libraries/car brand icons png/Eicher.png", "../assets/Icon Libraries/car brand icons png/Elemental.png", "../assets/Icon Libraries/car brand icons png/Englon.png", "../assets/Icon Libraries/car brand icons png/Exeed.png", "../assets/Icon Libraries/car brand icons png/FAW.png", "../assets/Icon Libraries/car brand icons png/FSO.png", "../assets/Icon Libraries/car brand icons png/Faraday Future.png", "../assets/Icon Libraries/car brand icons png/Ferrari.png", "../assets/Icon Libraries/car brand icons png/Fiat.png", "../assets/Icon Libraries/car brand icons png/Fisker.png", "../assets/Icon Libraries/car brand icons png/Foden.png", "../assets/Icon Libraries/car brand icons png/Force.png", "../assets/Icon Libraries/car brand icons png/Ford.png", "../assets/Icon Libraries/car brand icons png/Foton.png", "../assets/Icon Libraries/car brand icons png/Freightliner.png", "../assets/Icon Libraries/car brand icons png/GAC.png", "../assets/Icon Libraries/car brand icons png/GAZ.png", "../assets/Icon Libraries/car brand icons png/GMC.png", "../assets/Icon Libraries/car brand icons png/GT-R.png", "../assets/Icon Libraries/car brand icons png/GTA Motor.png", "../assets/Icon Libraries/car brand icons png/Gardner Douglas.png", "../assets/Icon Libraries/car brand icons png/Geely.png", "../assets/Icon Libraries/car brand icons png/General Motors.png", "../assets/Icon Libraries/car brand icons png/Genesis.png", "../assets/Icon Libraries/car brand icons png/Geo.png", "../assets/Icon Libraries/car brand icons png/Geometry.png", "../assets/Icon Libraries/car brand icons png/Ginetta.png", "../assets/Icon Libraries/car brand icons png/Golden.png", "../assets/Icon Libraries/car brand icons png/Gonow.png", "../assets/Icon Libraries/car brand icons png/Great Wall.png", "../assets/Icon Libraries/car brand icons png/Grinnall.png", "../assets/Icon Libraries/car brand icons png/Gumpert.png", "../assets/Icon Libraries/car brand icons png/HSV.png", "../assets/Icon Libraries/car brand icons png/Hafei.png", "../assets/Icon Libraries/car brand icons png/Haima.png", "../assets/Icon Libraries/car brand icons png/Haval.png", "../assets/Icon Libraries/car brand icons png/Hawtai.png", "../assets/Icon Libraries/car brand icons png/Hennessey.png", "../assets/Icon Libraries/car brand icons png/Higer.png", "../assets/Icon Libraries/car brand icons png/Hino.png", "../assets/Icon Libraries/car brand icons png/Holden.png", "../assets/Icon Libraries/car brand icons png/Hommell.png", "../assets/Icon Libraries/car brand icons png/Honda.png", "../assets/Icon Libraries/car brand icons png/Hongqi.png", "../assets/Icon Libraries/car brand icons png/Hongyan.png", "../assets/Icon Libraries/car brand icons png/Horch.png", "../assets/Icon Libraries/car brand icons png/Hudson.png", "../assets/Icon Libraries/car brand icons png/Hummer.png", "../assets/Icon Libraries/car brand icons png/Hyundai.png", "../assets/Icon Libraries/car brand icons png/IC Bus.png", "../assets/Icon Libraries/car brand icons png/Infiniti.png", "../assets/Icon Libraries/car brand icons png/International Harvester.png", "../assets/Icon Libraries/car brand icons png/International Trucks.png", "../assets/Icon Libraries/car brand icons png/Iran Khodro.png", "../assets/Icon Libraries/car brand icons png/Irizar.png", "../assets/Icon Libraries/car brand icons png/Iso.png", "../assets/Icon Libraries/car brand icons png/Isuzu.png", "../assets/Icon Libraries/car brand icons png/Iveco.png", "../assets/Icon Libraries/car brand icons png/JAC Motors.png", "../assets/Icon Libraries/car brand icons png/JBA Motors.png", "../assets/Icon Libraries/car brand icons png/Jaguar.png", "../assets/Icon Libraries/car brand icons png/Jeep.png", "../assets/Icon Libraries/car brand icons png/Jetta.png", "../assets/Icon Libraries/car brand icons png/Jiangling.png", "../assets/Icon Libraries/car brand icons png/KTM.png", "../assets/Icon Libraries/car brand icons png/Kamaz.png", "../assets/Icon Libraries/car brand icons png/Karlmann King.png", "../assets/Icon Libraries/car brand icons png/Karma.png", "../assets/Icon Libraries/car brand icons png/Keating Supercars.png", "../assets/Icon Libraries/car brand icons png/Kenworth.png", "../assets/Icon Libraries/car brand icons png/Kia.png", "../assets/Icon Libraries/car brand icons png/King Long.png", "../assets/Icon Libraries/car brand icons png/Koenigsegg.png", "../assets/Icon Libraries/car brand icons png/Lada.png", "../assets/Icon Libraries/car brand icons png/Lagonda.png", "../assets/Icon Libraries/car brand icons png/Lamborghini.png", "../assets/Icon Libraries/car brand icons png/Lancia.png", "../assets/Icon Libraries/car brand icons png/Land Rover.png", "../assets/Icon Libraries/car brand icons png/Landwind.png", "../assets/Icon Libraries/car brand icons png/Laraki.png", "../assets/Icon Libraries/car brand icons png/Lexus.png", "../assets/Icon Libraries/car brand icons png/Leyland.png", "../assets/Icon Libraries/car brand icons png/Lifan.png", "../assets/Icon Libraries/car brand icons png/Ligier.png", "../assets/Icon Libraries/car brand icons png/Lincoln.png", "../assets/Icon Libraries/car brand icons png/Lister.png", "../assets/Icon Libraries/car brand icons png/Lixiang.png", "../assets/Icon Libraries/car brand icons png/Lloyd.png", "../assets/Icon Libraries/car brand icons png/Lobini.png", "../assets/Icon Libraries/car brand icons png/London EV.png", "../assets/Icon Libraries/car brand icons png/Lordstown.png", "../assets/Icon Libraries/car brand icons png/Lotus.png", "../assets/Icon Libraries/car brand icons png/Lucid.png", "../assets/Icon Libraries/car brand icons png/Luxgen.png", "../assets/Icon Libraries/car brand icons png/Lynkco.png", "../assets/Icon Libraries/car brand icons png/MAN.png", "../assets/Icon Libraries/car brand icons png/MAZ.png", "../assets/Icon Libraries/car brand icons png/MG.png", "../assets/Icon Libraries/car brand icons png/MK Sportscars.png", "../assets/Icon Libraries/car brand icons png/Mack.png", "../assets/Icon Libraries/car brand icons png/Mahindra.png", "../assets/Icon Libraries/car brand icons png/Mansory.png", "../assets/Icon Libraries/car brand icons png/Marlin.png", "../assets/Icon Libraries/car brand icons png/Maserati.png", "../assets/Icon Libraries/car brand icons png/Mastretta.png", "../assets/Icon Libraries/car brand icons png/Maxus.png", "../assets/Icon Libraries/car brand icons png/Maybach.png", "../assets/Icon Libraries/car brand icons png/Mazda.png", "../assets/Icon Libraries/car brand icons png/Mazzanti-Automobili.png", "../assets/Icon Libraries/car brand icons png/McLaren.png", "../assets/Icon Libraries/car brand icons png/Melkus.png", "../assets/Icon Libraries/car brand icons png/Mercedes Benz.png", "../assets/Icon Libraries/car brand icons png/Mercury.png", "../assets/Icon Libraries/car brand icons png/Merkur.png", "../assets/Icon Libraries/car brand icons png/Microcar.png", "../assets/Icon Libraries/car brand icons png/Mills Extreme Vehicles.png", "../assets/Icon Libraries/car brand icons png/Mini.png", "../assets/Icon Libraries/car brand icons png/Mitsubishi.png", "../assets/Icon Libraries/car brand icons png/Mitsuoka.png", "../assets/Icon Libraries/car brand icons png/Morgan.png", "../assets/Icon Libraries/car brand icons png/Navistar.png", "../assets/Icon Libraries/car brand icons png/Nevs.png", "../assets/Icon Libraries/car brand icons png/Nikola.png", "../assets/Icon Libraries/car brand icons png/Nio.png", "../assets/Icon Libraries/car brand icons png/Nismo.png", "../assets/Icon Libraries/car brand icons png/Nissan.png", "../assets/Icon Libraries/car brand icons png/Noble.png", "../assets/Icon Libraries/car brand icons png/Oldsmobile.png", "../assets/Icon Libraries/car brand icons png/Opel.png", "../assets/Icon Libraries/car brand icons png/Paccar.png", "../assets/Icon Libraries/car brand icons png/Packard.png", "../assets/Icon Libraries/car brand icons png/Pagani.png", "../assets/Icon Libraries/car brand icons png/Panoz.png", "../assets/Icon Libraries/car brand icons png/Pegaso.png", "../assets/Icon Libraries/car brand icons png/Perodua.png", "../assets/Icon Libraries/car brand icons png/Peterbilt.png", "../assets/Icon Libraries/car brand icons png/Peugeot.png", "../assets/Icon Libraries/car brand icons png/Pininfarina.png", "../assets/Icon Libraries/car brand icons png/Plymouth.png", "../assets/Icon Libraries/car brand icons png/Polestar.png", "../assets/Icon Libraries/car brand icons png/Pontiac.png", "../assets/Icon Libraries/car brand icons png/Porsche.png", "../assets/Icon Libraries/car brand icons png/Praga.png", "../assets/Icon Libraries/car brand icons png/Premier.png", "../assets/Icon Libraries/car brand icons png/Prodrive.png", "../assets/Icon Libraries/car brand icons png/Proton.png", "../assets/Icon Libraries/car brand icons png/Qoros.png", "../assets/Icon Libraries/car brand icons png/RAM.png", "../assets/Icon Libraries/car brand icons png/Radical.png", "../assets/Icon Libraries/car brand icons png/Rambler.png", "../assets/Icon Libraries/car brand icons png/Ranz.png", "../assets/Icon Libraries/car brand icons png/Renault Samsung Motors.png", "../assets/Icon Libraries/car brand icons png/Renault.png", "../assets/Icon Libraries/car brand icons png/Rezvani.png", "../assets/Icon Libraries/car brand icons png/Rimac.png", "../assets/Icon Libraries/car brand icons png/Rinspeed.png", "../assets/Icon Libraries/car brand icons png/Rivian.png", "../assets/Icon Libraries/car brand icons png/Roewe.png", "../assets/Icon Libraries/car brand icons png/Rolls Royce.png", "../assets/Icon Libraries/car brand icons png/Ronart.png", "../assets/Icon Libraries/car brand icons png/Rossion.png", "../assets/Icon Libraries/car brand icons png/Rover.png", "../assets/Icon Libraries/car brand icons png/Ruf.png", "../assets/Icon Libraries/car brand icons png/SAIC Motor.png", "../assets/Icon Libraries/car brand icons png/SEAT.png", "../assets/Icon Libraries/car brand icons png/SSC.png", "../assets/Icon Libraries/car brand icons png/Saab.png", "../assets/Icon Libraries/car brand icons png/Saipa.png", "../assets/Icon Libraries/car brand icons png/Saturn.png", "../assets/Icon Libraries/car brand icons png/Scania.png", "../assets/Icon Libraries/car brand icons png/Scion.png", "../assets/Icon Libraries/car brand icons png/Setra.png", "../assets/Icon Libraries/car brand icons png/Shacman.png", "../assets/Icon Libraries/car brand icons png/Simca.png", "../assets/Icon Libraries/car brand icons png/Singulato.png", "../assets/Icon Libraries/car brand icons png/Sinotruk.png", "../assets/Icon Libraries/car brand icons png/Sisu.png", "../assets/Icon Libraries/car brand icons png/Skoda.png", "../assets/Icon Libraries/car brand icons png/Smart.png", "../assets/Icon Libraries/car brand icons png/Soueast.png", "../assets/Icon Libraries/car brand icons png/Spirra.png", "../assets/Icon Libraries/car brand icons png/Spyker.png", "../assets/Icon Libraries/car brand icons png/SsangYong.png", "../assets/Icon Libraries/car brand icons png/Sterling.png", "../assets/Icon Libraries/car brand icons png/Studebaker.png", "../assets/Icon Libraries/car brand icons png/Stutz.png", "../assets/Icon Libraries/car brand icons png/Subaru.png", "../assets/Icon Libraries/car brand icons png/Suffolk Sportscars.png", "../assets/Icon Libraries/car brand icons png/Suzuki.png", "../assets/Icon Libraries/car brand icons png/TVR.png", "../assets/Icon Libraries/car brand icons png/Talbot.png", "../assets/Icon Libraries/car brand icons png/Tata.png", "../assets/Icon Libraries/car brand icons png/Tatra.png", "../assets/Icon Libraries/car brand icons png/TechArt.png", "../assets/Icon Libraries/car brand icons png/Tesla.png", "../assets/Icon Libraries/car brand icons png/Toyota Alphard.png", "../assets/Icon Libraries/car brand icons png/Toyota Century.png", "../assets/Icon Libraries/car brand icons png/Toyota Crown.png", "../assets/Icon Libraries/car brand icons png/Toyota.png", "../assets/Icon Libraries/car brand icons png/Tramontana.png", "../assets/Icon Libraries/car brand icons png/Trion.png", "../assets/Icon Libraries/car brand icons png/Triumph.png", "../assets/Icon Libraries/car brand icons png/Troller.png", "../assets/Icon Libraries/car brand icons png/Tucker.png", "../assets/Icon Libraries/car brand icons png/UAZ.png", "../assets/Icon Libraries/car brand icons png/UD Trucks.png", "../assets/Icon Libraries/car brand icons png/Ultima.png", "../assets/Icon Libraries/car brand icons png/Vauxhall.png", "../assets/Icon Libraries/car brand icons png/Vector Motors.png", "../assets/Icon Libraries/car brand icons png/Vencer.png", "../assets/Icon Libraries/car brand icons png/Venucia.png", "../assets/Icon Libraries/car brand icons png/Vinfast.png", "../assets/Icon Libraries/car brand icons png/Viper.png", "../assets/Icon Libraries/car brand icons png/Volkswagen.png", "../assets/Icon Libraries/car brand icons png/Volvo.png", "../assets/Icon Libraries/car brand icons png/W Motors.png", "../assets/Icon Libraries/car brand icons png/Wanderer.png", "../assets/Icon Libraries/car brand icons png/Wartburg.png", "../assets/Icon Libraries/car brand icons png/Weltmeister.png", "../assets/Icon Libraries/car brand icons png/Western Star.png", "../assets/Icon Libraries/car brand icons png/Westfield.png", "../assets/Icon Libraries/car brand icons png/Wey.png", "../assets/Icon Libraries/car brand icons png/Wiesmann.png", "../assets/Icon Libraries/car brand icons png/Willys Overland.png", "../assets/Icon Libraries/car brand icons png/Workhorse.png", "../assets/Icon Libraries/car brand icons png/Wuling.png", "../assets/Icon Libraries/car brand icons png/Xpeng.png", "../assets/Icon Libraries/car brand icons png/Yulon.png", "../assets/Icon Libraries/car brand icons png/Yutong.png", "../assets/Icon Libraries/car brand icons png/ZAZ.png", "../assets/Icon Libraries/car brand icons png/Zenos Cars.png", "../assets/Icon Libraries/car brand icons png/Zenvo.png", "../assets/Icon Libraries/car brand icons png/Zhinuo.png", "../assets/Icon Libraries/car brand icons png/Zhongtong.png", "../assets/Icon Libraries/car brand icons png/Zotye.png"];
+
+        // Icons
+        let filtered = [...ICONS];
+        let page = 1;
+        const perPage = 50;
+
+        function render() {
+            const grid = document.getElementById('icon-output');
+            grid.innerHTML = '';
+            const start = (page-1)*perPage;
+            const current = filtered.slice(start, start+perPage);
+            current.forEach(i => {
+                const name = i.split('/').pop().split('.')[0];
+                grid.innerHTML += `<div class="lib-card"><img src="${i}" loading="lazy"><div class="lib-name">${name}</div></div>`;
+            });
+            document.getElementById('page-label').innerText = `PAGE ${page} OF ${Math.ceil(filtered.length/perPage) || 1}`;
+        }
+
+        function filterIcons(k, btn) {
+            document.querySelectorAll('#icon-library .btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            filtered = k === 'all' ? [...ICONS] : ICONS.filter(i => i.toLowerCase().includes(k.toLowerCase()));
+            page = 1;
+            render();
+        }
+
+        function movePage(d) {
+            const max = Math.ceil(filtered.length/perPage);
+            page += d;
+            if(page < 1) page = 1;
+            if(page > max) page = max;
+            render();
+        }
+
+        render();
+
+        // Smooth scroll
+        document.querySelectorAll('.nav-item').forEach(link => {
+            link.onclick = (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                window.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
+                document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+                link.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

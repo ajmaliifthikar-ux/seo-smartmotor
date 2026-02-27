@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" width="140" height="140">
+  <!-- Star Burst Background -->
+  <polygon points="70,5 78,25 100,20 88,38 105,55 85,65 90,88 70,75 50,88 55,65 35,55 52,38 40,20 62,25" fill="#F59E0B"/>
+  <polygon points="70,20 76,35 92,32 83,44 94,58 78,65 82,82 70,72 58,82 62,65 46,58 57,44 48,32 64,35" fill="#FBBF24"/>
+  
+  <!-- Inner Circle -->
+  <circle cx="70" cy="70" r="35" fill="#121212"/>
+  
+  <!-- Text -->
+  <text x="70" y="62" font-family="Inter, sans-serif" font-size="8" font-weight="700" fill="#F59E0B" text-anchor="middle" text-transform="uppercase" letter-spacing="0.1em">Top</text>
+  <text x="70" y="82" font-family="Inter, sans-serif" font-size="14" font-weight="900" fill="#FFFFFF" text-anchor="middle" text-transform="uppercase">SELLER</text>
+  
+  <!-- Crown -->
+  <path d="M55 50 L60 42 L70 48 L80 42 L85 50 L55 50" fill="#F59E0B"/>
+</svg>

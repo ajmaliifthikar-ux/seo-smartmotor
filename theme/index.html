@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Motor High-End Theme</title>
+    <!-- Inject Tailwind CSS v3 via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                red: '#E62329',
+                dark: '#121212',
+                charcoal: '#1A1A1A',
+                bg: '#FAFAF9'
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Load Custom Extracted Theme Styles -->
+    <link rel="stylesheet" href="theme.css">
+</head>
+<body class="bg-[#FAFAF9] text-[#121212] p-6 md:p-12 antialiased overflow-x-hidden selection:bg-[#E62329] selection:text-white">
+
+    <!-- Warm noise texture overlay for depth -->
+    <div class="fixed inset-0 pointer-events-none z-0 opacity-[0.05] mix-blend-multiply bg-[url('data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.75\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E')] bg-[length:200px_200px]"></div>
+
+    <div class="max-w-6xl mx-auto space-y-24 relative z-10 pt-10">
+        
+        <!-- Header -->
+        <div class="space-y-6 flex flex-col items-center text-center">
+            <div class="w-20 h-20 bg-white rounded-3xl shadow-lg border border-gray-100 flex items-center justify-center mb-4">
+                <i data-lucide="sparkles" class="w-10 h-10 text-[#E62329]"></i>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-[#121212]">UI Components</h1>
+            <p class="text-xl md:text-2xl text-[#666666] max-w-3xl font-light">Refined mobile-app quality components with hyper-rounded squircles, physical drop shadows, and glassmorphic depth.</p>
+        </div>
+
+        <!-- Section: Cards & Depth -->
+        <section class="space-y-10">
+            <div class="space-y-3 pl-2">
+                <h2 class="text-3xl font-semibold text-[#121212] tracking-tight">App Cards</h2>
+                <p class="text-[#666666] text-lg">Hyper-rounded corners (28px) with layered shadow physics (.card-depth).</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Light Card -->
+                <div class="card-depth p-8 flex flex-col gap-5 group cursor-pointer bg-white">
+                    <div class="flex justify-between items-start">
+                        <div class="w-16 h-16 app-icon-container">
+                            <i data-lucide="settings-2" class="w-8 h-8 text-[#121212]"></i>
+                        </div>
+                        <span class="bg-gray-100 text-[#121212] px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Service</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3 text-[#121212] group-hover:text-[#E62329] transition-colors">Mechanical</h3>
+                        <p class="text-gray-500 text-base leading-relaxed">Expert engine diagnostics, transmission repair, and routine maintenance for luxury vehicles.</p>
+                    </div>
+                </div>
+
+                <!-- Dark Card (Auto Contrast Test) -->
+                <div class="card-depth !bg-[#121212] !border-gray-800 p-8 flex flex-col gap-5 group cursor-pointer transition-colors duration-400">
+                    <div class="flex justify-between items-start">
+                        <div class="w-16 h-16 dark-icon-container">
+                            <i data-lucide="shield" class="w-8 h-8 text-[#E62329]"></i>
+                        </div>
+                        <span class="bg-white/10 text-white px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider backdrop-blur-md">Premium</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Protection</h3>
+                        <p class="text-gray-400 text-base leading-relaxed group-hover:text-gray-300 transition-colors">Premium PPF installation protecting your exotic car from scratches and stone chips.</p>
+                    </div>
+                </div>
+
+                <!-- Accent Card -->
+                <div class="card-depth !bg-[#E62329] !border-transparent p-8 button-overlay flex flex-col gap-5 text-white group cursor-pointer overflow-hidden relative">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10 duration-500"></div>
+                    <div class="flex justify-between items-start relative z-20">
+                        <div class="w-16 h-16 bg-white/20 backdrop-blur-xl rounded-2xl flex items-center justify-center border border-white/20 shadow-inner">
+                            <i data-lucide="zap" class="w-8 h-8 text-white"></i>
+                        </div>
+                    </div>
+                    <div class="relative z-20">
+                        <h3 class="text-2xl font-bold mb-3">Performance</h3>
+                        <p class="text-white/90 text-base leading-relaxed">Unlock the full potential of your engine with our custom ECU remapping services.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section: Textures -->
+        <section class="space-y-10">
+            <div class="space-y-3 pl-2">
+                <h2 class="text-3xl font-semibold text-[#121212] tracking-tight">Immersive Textures</h2>
+                <p class="text-[#666666] text-lg">Rich, tactile surfaces using CSS math and blended assets.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Carbon Fiber -->
+                <div class="card-depth overflow-hidden group cursor-pointer">
+                    <div class="h-56 carbon-fiber flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <span class="text-white text-2xl font-bold tracking-[0.3em] silver-shine relative z-10">CARBON FIBER</span>
+                    </div>
+                    <div class="p-8 bg-white flex justify-between items-center">
+                        <div>
+                            <h3 class="font-bold text-xl mb-1 text-[#121212]">CSS Weave Pattern</h3>
+                            <p class="text-base text-gray-500">Deep, premium mesh background.</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-400"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Glass Scratches / Button Overlay -->
+                <div class="card-depth overflow-hidden group cursor-pointer">
+                    <div class="h-56 bg-[#1A1A1A] button-overlay flex items-center justify-center relative">
+                        <span class="text-white text-2xl font-bold tracking-[0.2em] relative z-10">METALLIC FLAKE</span>
+                    </div>
+                    <div class="p-8 bg-white flex justify-between items-center">
+                        <div>
+                            <h3 class="font-bold text-xl mb-1 text-[#121212]">.button-overlay</h3>
+                            <p class="text-base text-gray-500">Scratch/noise blend for automotive paint feel.</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-400"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Buttons -->
+        <section class="space-y-10">
+            <div class="space-y-3 pl-2">
+                <h2 class="text-3xl font-semibold text-[#121212] tracking-tight">Interactive Controls</h2>
+                <p class="text-[#666666] text-lg">Pill-shaped, touch-friendly buttons optimized for mobile feel.</p>
+            </div>
+
+            <div class="flex flex-wrap gap-6 items-center bg-white p-10 rounded-[32px] border border-gray-100 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] relative overflow-hidden">
+                <!-- Abstract background shape -->
+                <div class="absolute -right-20 -top-20 w-64 h-64 bg-gray-50 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+
+                <div class="space-y-3 flex flex-col relative z-10 min-w-[180px]">
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-widest pl-2">Primary Flow</span>
+                    <button class="app-btn bg-[#121212] text-white px-8 py-4 font-semibold text-base flex justify-center items-center gap-2">
+                        <span>Book Now</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 opacity-70"></i>
+                    </button>
+                </div>
+
+                <div class="space-y-3 flex flex-col relative z-10 min-w-[180px]">
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-widest pl-2">Brand Action</span>
+                    <button class="app-btn bg-[#E62329] text-white px-8 py-4 font-semibold text-base shadow-[0_8px_16px_-4px_rgba(230,35,41,0.3)] hover:shadow-[0_12px_20px_-4px_rgba(230,35,41,0.4)] flex justify-center items-center gap-2">
+                        <i data-lucide="phone-call" class="w-4 h-4"></i>
+                        <span>Emergency</span>
+                    </button>
+                </div>
+
+                <div class="space-y-3 flex flex-col relative z-10 min-w-[180px]">
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-widest pl-2">Secondary</span>
+                    <button class="app-btn bg-white text-[#121212] border-2 border-gray-200 px-8 py-4 font-semibold text-base hover:bg-gray-50 hover:border-gray-300 flex justify-center items-center">
+                        View Services
+                    </button>
+                </div>
+
+                <div class="space-y-3 flex flex-col relative z-10 min-w-[180px]">
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-widest pl-2">With Texture</span>
+                    <button class="app-btn button-overlay bg-[#1A1A1A] text-white px-8 py-4 font-semibold text-base flex justify-center items-center gap-2">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-yellow-400"></i>
+                        <span>Premium Wash</span>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section: Forms -->
+        <section class="space-y-10 pb-20">
+            <div class="space-y-3 pl-2">
+                <h2 class="text-3xl font-semibold text-[#121212] tracking-tight">Refined Inputs</h2>
+                <p class="text-[#666666] text-lg">Squircle input fields (.field-depth) with iOS-like inset shadows and focus states.</p>
+            </div>
+
+            <div class="bg-white p-10 md:p-12 rounded-[36px] border border-gray-100 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.06)] max-w-2xl relative">
+                
+                <div class="absolute top-0 right-10 transform -translate-y-1/2 bg-[#121212] text-white px-6 py-2 rounded-full text-sm font-bold shadow-xl flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-[#E62329]"></i> Example Form
+                </div>
+
+                <div class="grid gap-8">
+                    
+                    <div class="grid w-full items-center gap-3">
+                        <label class="text-[15px] font-semibold text-[#121212] pl-1">Full Name</label>
+                        <input type="text" placeholder="John Doe" class="field-depth flex h-14 w-full px-5 text-[15px] text-[#121212] placeholder:text-gray-400">
+                    </div>
+
+                    <div class="grid w-full items-center gap-3">
+                        <label class="text-[15px] font-semibold text-[#121212] pl-1 flex items-center gap-1">
+                            Phone Number <span class="text-[#E62329]">*</span>
+                        </label>
+                        <div class="relative">
+                            <i data-lucide="phone" class="absolute left-5 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                            <input type="tel" placeholder="+971 50 123 4567" class="field-depth flex h-14 w-full pl-12 pr-5 text-[15px] text-[#121212] placeholder:text-gray-400">
+                        </div>
+                    </div>
+
+                    <div class="grid w-full items-center gap-3">
+                        <label class="text-[15px] font-semibold text-[#121212] pl-1">Error State Validation</label>
+                        <div class="relative">
+                            <i data-lucide="mail" class="absolute left-5 top-1/2 transform -translate-y-1/2 w-5 h-5 text-red-500"></i>
+                            <input type="email" value="invalid-email-format" class="field-depth flex h-14 w-full pl-12 pr-12 text-[15px] text-[#121212] !border-red-500 !bg-red-50 focus-visible:!ring-red-500">
+                            <i data-lucide="alert-circle" class="absolute right-5 top-1/2 transform -translate-y-1/2 w-5 h-5 text-red-500"></i>
+                        </div>
+                        <p class="text-sm text-[#E62329] font-medium pl-2 mt-1 flex items-center gap-1">
+                            Please enter a valid email address.
+                        </p>
+                    </div>
+
+                    <div class="grid w-full items-center gap-3">
+                        <label class="text-[15px] font-semibold text-[#121212] pl-1">Service Details</label>
+                        <textarea rows="5" placeholder="Describe the issue with your vehicle..." class="field-depth flex w-full p-5 text-[15px] text-[#121212] placeholder:text-gray-400 resize-none"></textarea>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+      lucide.createIcons();
+    </script>
+</body>
+</html>

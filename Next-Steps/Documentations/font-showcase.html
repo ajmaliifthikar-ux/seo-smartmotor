@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Motor - Typography Showcase</title>
+
+    <!-- Connect directly to Google Fonts CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Kufi+Arabic:wght@100..900&family=Noto+Sans+Arabic:wght@100..900&family=Tajawal:wght@200;300;400;500;700;800;900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #FAFAF9;
+            --text-dark: #121212;
+            --text-muted: #666666;
+            --brand-red: #E62329;
+            --border: #ECECEA;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 40px;
+            /* Base default so system doesn't override */
+            font-family: 'Inter', -apple-system, sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 60px;
+            border-bottom: 2px solid var(--text-dark);
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            color: var(--brand-red);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 14px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .font-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .font-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .font-use {
+            background: #121212;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .sample {
+            margin-bottom: 30px;
+        }
+
+        .sample-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 5px;
+            display: block;
+            font-family: monospace;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 40px 0;
+        }
+
+        /* English Classes */
+        .f-inter { font-family: 'Inter', sans-serif; }
+        .f-roboto { font-family: 'Roboto', sans-serif; }
+        .f-segoe { font-family: 'Segoe UI', sans-serif; }
+        .f-apple { font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+
+        /* Arabic Classes */
+        .f-tajawal { font-family: 'Tajawal', sans-serif; }
+        .f-noto-sans { font-family: 'Noto Sans Arabic', sans-serif; font-optical-sizing: auto; }
+        .f-noto-kufi { font-family: 'Noto Kufi Arabic', sans-serif; font-optical-sizing: auto; }
+
+        /* Weights */
+        .w-400 { font-weight: 400; }
+        .w-500 { font-weight: 500; }
+        .w-700 { font-weight: 700; }
+        .w-900 { font-weight: 900; }
+
+        /* Sizes */
+        .text-5xl { font-size: 48px; line-height: 1.1; letter-spacing: -0.02em; }
+        .text-2xl { font-size: 24px; line-height: 1.3; }
+        .text-base { font-size: 16px; }
+        .text-sm { font-size: 14px; }
+        
+        .uppercase { text-transform: uppercase; }
+        .italic { font-style: italic; }
+        
+        /* RTL layout for Arabic blocks */
+        .rtl { direction: rtl; text-align: right; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="subtitle">Design System 2.0</div>
+        <h1>Typography Guidelines</h1>
+        <p>A comprehensive visual reference for Smart Motor's English and Arabic font families.</p>
+    </header>
+
+    <div class="grid">
+        
+        <!-- INTER (Primary English) -->
+        <div class="font-card">
+            <div class="card-header">
+                <h2 class="font-name f-inter">Inter</h2>
+                <span class="font-use">Primary LTR</span>
+            </div>
+            
+            <div class="sample">
+                <span class="sample-label">Heading 1 (Weight 900, Uppercase, Italic)</span>
+                <div class="f-inter w-900 text-5xl uppercase italic">Smart Motor</div>
+            </div>
+            
+            <div class="sample">
+                <span class="sample-label">Heading 3 (Weight 700)</span>
+                <div class="f-inter w-700 text-2xl">Precision Engineering</div>
+            </div>
+            
+            <div class="sample">
+                <span class="sample-label">Body Text (Weight 400)</span>
+                <div class="f-inter w-400 text-base" style="color: var(--text-muted)">
+                    Abu Dhabi's premier automotive atelier. Factory-certified technicians for German, Japanese, Chinese, European & American vehicles.
+                </div>
+            </div>
+            
+            <div class="sample">
+                <span class="sample-label">UI Button/Label (Weight 700, Uppercase, 14px)</span>
+                <div class="f-inter w-700 text-sm uppercase" style="letter-spacing: 0.1em; color: var(--brand-red);">Book Appointment</div>
+            </div>
+        </div>
+
+        <!-- TAJAWAL (Primary Arabic) -->
+        <div class="font-card rtl">
+            <div class="card-header" style="flex-direction: row-reverse;">
+                <h2 class="font-name f-tajawal">Tajawal</h2>
+                <span class="font-use">Primary RTL Headings</span>
+            </div>
+            
+            <div class="sample">
+                <span class="sample-label text-left ltr" style="direction:ltr;text-align:left;">Heading 1 (Weight 900)</span>
+                <div class="f-tajawal w-900 text-5xl">سمارت موتور</div>
+            </div>
+            
+            <div class="sample">
+                <span class="sample-label text-left ltr" style="direction:ltr;text-align:left;">Heading 3 (Weight 700)</span>
+                <div class="f-tajawal w-700 text-2xl">هندسة دقيقة وتكنولوجيا متطورة</div>
+            </div>
+            
+            <div class="sample">
+                <span class="sample-label text-left ltr" style="direction:ltr;text-align:left;">Body Text (Weight 500)</span>
+                <div class="f-tajawal w-500 text-base" style="color: var(--text-muted)">
+                    مركز صيانة السيارات الرائد في أبوظبي. فنيون معتمدون من المصنع للسيارات الألمانية واليابانية والأوروبية.
+                </div>
+            </div>
+            
+            <div class="sample">
+                <span class="sample-label text-left ltr" style="direction:ltr;text-align:left;">UI Button/Label (Weight 800, 14px)</span>
+                <div class="f-tajawal w-900 text-sm" style="color: var(--brand-red);">احجز موعداً</div>
+            </div>
+        </div>
+        
+        <!-- NOTO SANS ARABIC (Secondary Arabic UI) -->
+        <div class="font-card rtl">
+            <div class="card-header" style="flex-direction: row-reverse;">
+                <h2 class="font-name f-noto-sans">Noto Sans Arabic</h2>
+                <span class="font-use">RTL Body / UI</span>
+            </div>
+            
+            <div class="sample">
+                <span class="sample-label text-left ltr" style="direction:ltr;text-align:left;">Heading 2 (Weight 700)</span>
+                <div class="f-noto-sans w-700 text-2xl">خدمات الطلاء والعناية بالسيارات</div>
+            </div>
+            
+            <div class="sample">
+                <span class="sample-label text-left ltr" style="direction:ltr;text-align:left;">Body Text (Weight 400)</span>
+                <div class="f-noto-sans w-400 text-base" style="color: var(--text-muted)">
+                    توفر سمارت موتورز خدمات حماية الطلاء السيراميك وتظليل النوافذ بأسعار تنافسية وجودة عالية في مصفح، أبوظبي.
+                </div>
+            </div>
+        </div>
+
+        <!-- NOTO KUFI ARABIC (Alternative RTL) -->
+        <div class="font-card rtl">
+            <div class="card-header" style="flex-direction: row-reverse;">
+                <h2 class="font-name f-noto-kufi">Noto Kufi Arabic</h2>
+                <span class="font-use">RTL Structured / Tech</span>
+            </div>
+            
+            <div class="sample">
+                <span class="sample-label text-left ltr" style="direction:ltr;text-align:left;">Heading 2 (Weight 700)</span>
+                <div class="f-noto-kufi w-700 text-2xl">خدمات الطلاء والعناية بالسيارات</div>
+            </div>
+            
+            <div class="sample">
+                <span class="sample-label text-left ltr" style="direction:ltr;text-align:left;">Body Text (Weight 400)</span>
+                <div class="f-noto-kufi w-400 text-base" style="color: var(--text-muted)">
+                    توفر سمارت موتورز خدمات حماية الطلاء السيراميك وتظليل النوافذ بأسعار تنافسية وجودة عالية في مصفح، أبوظبي.
+                </div>
+            </div>
+        </div>
+
+        <!-- ROBOTO (Android Fallback) -->
+        <div class="font-card">
+            <div class="card-header">
+                <h2 class="font-name f-roboto">Roboto</h2>
+                <span class="font-use">Android Fallback</span>
+            </div>
+            
+            <div class="sample">
+                <span class="sample-label">Heading 1 (Weight 900, Uppercase, Italic)</span>
+                <div class="f-roboto w-900 text-5xl uppercase italic">Smart Motor</div>
+            </div>
+            
+            <div class="sample">
+                <span class="sample-label">Body Text (Weight 400)</span>
+                <div class="f-roboto w-400 text-base" style="color: var(--text-muted)">
+                    Abu Dhabi's premier automotive atelier. Factory-certified technicians for German, Japanese, Chinese, European & American vehicles.
+                </div>
+            </div>
+        </div>
+
+        <!-- SYSTEM NATIVE (Apple/Windows Fallbacks) -->
+        <div class="font-card">
+            <div class="card-header">
+                <h2 class="font-name" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">System Native</h2>
+                <span class="font-use">iOS / Windows Fallback</span>
+            </div>
+            
+            <div class="sample">
+                <span class="sample-label">Heading 1 (-apple-system / Segoe UI)</span>
+                <div class="w-900 text-5xl uppercase italic" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">Smart Motor</div>
+            </div>
+            
+            <div class="sample">
+                <span class="sample-label">Body Text</span>
+                <div class="w-400 text-base" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--text-muted);">
+                    Abu Dhabi's premier automotive atelier. Factory-certified technicians for German, Japanese, Chinese, European & American vehicles.
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

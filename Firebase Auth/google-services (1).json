@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "459337905758",
+    "firebase_url": "https://smartmotoruae-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "smartmotoruae",
+    "storage_bucket": "smartmotoruae.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459337905758:android:828e54eb184d92548c66cf",
+        "android_client_info": {
+          "package_name": "ae.smartmotor.clientapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459337905758-cr47fsng5348ev9d71gh07cunc21gdkm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIL7hzPBULy5IUQRxeAG79tHJMFhruh3Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459337905758-cr47fsng5348ev9d71gh07cunc21gdkm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "459337905758-fssc9dendd5elid2cruc7hcp3ogbgpl0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ae.smartmotor.clientapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

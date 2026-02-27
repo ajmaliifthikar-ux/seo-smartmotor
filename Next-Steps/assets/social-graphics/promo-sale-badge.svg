@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" width="160" height="120">
+  <!-- Tag Shape -->
+  <path d="M10 60 L10 10 L80 10 L150 60 L150 70 L150 110 L10 110 L10 60" fill="#E62329"/>
+  
+  <!-- Hole -->
+  <circle cx="25" cy="60" r="8" fill="#1A1A1A"/>
+  
+  <!-- Text -->
+  <text x="90" y="50" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle" text-transform="uppercase" letter-spacing="0.15em">SALE</text>
+  <text x="90" y="80" font-family="Inter, sans-serif" font-size="32" font-weight="900" fill="#FFFFFF" text-anchor="middle" font-style="italic">50%</text>
+  <text x="90" y="98" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle" text-transform="uppercase" letter-spacing="0.1em">OFF</text>
+</svg>

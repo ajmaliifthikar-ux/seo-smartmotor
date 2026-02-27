@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" width="140" height="140">
+  <defs>
+    <linearGradient id="discountGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#121212"/>
+      <stop offset="100%" style="stop-color:#1A1A1A"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Circle Background -->
+  <circle cx="70" cy="70" r="65" fill="url(#discountGrad)" stroke="#E62329" stroke-width="3"/>
+  
+  <!-- Inner Circle -->
+  <circle cx="70" cy="70" r="50" fill="none" stroke="#E62329" stroke-width="1"/>
+  
+  <!-- Text -->
+  <text x="70" y="60" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#E62329" text-anchor="middle" text-transform="uppercase" letter-spacing="0.15em">SAVE</text>
+  <text x="70" y="95" font-family="Inter, sans-serif" font-size="36" font-weight="900" fill="#FFFFFF" text-anchor="middle" font-style="italic">25%</text>
+  
+  <!-- Star Decorations -->
+  <polygon points="70,22 73,30 82,30 75,36 78,45 70,40 62,45 65,36 58,30 67,30" fill="#E62329"/>
+  <polygon points="70,118 73,110 82,110 75,104 78,95 70,100 62,95 65,104 58,110 67,110" fill="#E62329"/>
+</svg>

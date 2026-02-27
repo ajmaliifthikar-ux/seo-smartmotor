@@ -1,0 +1,8 @@
+{
+  "track_id": "accessibility-fixes_20260224",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-02-24T12:00:00Z",
+  "updated_at": "2026-02-24T12:00:00Z",
+  "description": "Fix accessibility and contrast issues in all sections, including the booking section, and investigate/fix the Google Wallet button implementation."
+}

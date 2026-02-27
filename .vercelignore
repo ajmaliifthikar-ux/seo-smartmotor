@@ -1,0 +1,37 @@
+.git
+.gitignore
+.eslintignore
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env*.local
+.vercel
+.DS_Store
+Perplexity-Knowledge/
+garlic-hub/
+garlic-signage.com/
+
+# Unnecessary files for Vercel deployment
+Firebase Auth/
+"Firebase Auth"/
+Research Data - SEO/
+error-screenshots/
+audit_screenshots/
+_junk_archive/
+.next/
+scripts/
+.venv/
+public/design-system/social-graphics/
+"public/design-system/Icon Libraries"/
+Next-Steps/
+"Research Data - SEO"/
+Researched New/
+nanobanana-output/
+*.pdf
+*.ai
+*.log
+*.tmp
+audit_homepage_full.png
+full_site_audit.py
+research_audit.py

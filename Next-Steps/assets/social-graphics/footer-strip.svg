@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 100" width="800" height="100">
+  <defs>
+    <style>
+      .bg { fill: #121212; }
+      .btn-bg { fill: #E62329; }
+      .text-white { fill: #FFFFFF; font-family: 'Inter', sans-serif; }
+      .brand { font-size: 20px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; }
+      .contact { font-size: 18px; font-weight: 700; letter-spacing: 0.05em; }
+      .btn-text { font-size: 14px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; }
+      .divider { fill: none; stroke: rgba(255,255,255,0.2); stroke-width: 2; }
+      .icon { stroke: #FFFFFF; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    </style>
+  </defs>
+  <g id="Footer-Strip">
+    <rect x="10" y="15" width="780" height="70" rx="35" class="bg" />
+    <g id="Brand" transform="translate(40, 50)">
+      <path d="M12 -8 L2 -3 L12 2 L22 -3 Z M2 7 L12 12 L22 7 M2 2 L12 7 L22 2" class="icon" transform="translate(0, -2)"/>
+      <text x="35" y="7" class="text-white brand">SMART MOTOR</text>
+      <line x1="230" y1="-10" x2="230" y2="15" class="divider" />
+    </g>
+    <g id="Contact" transform="translate(300, 50)">
+      <text x="0" y="6" class="text-white contact">800 76278   |   smartmotor.ae</text>
+    </g>
+    <g id="CTA-Button" transform="translate(610, 27)">
+      <rect x="0" y="0" width="160" height="46" rx="23" class="btn-bg" />
+      <text x="80" y="28" class="text-white btn-text" text-anchor="middle">BOOK NOW</text>
+    </g>
+  </g>
+</svg>

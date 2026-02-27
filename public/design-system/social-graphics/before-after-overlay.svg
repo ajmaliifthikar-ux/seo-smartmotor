@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250">
+  <defs>
+    <clipPath id="mainClip">
+      <rect x="5" y="5" width="390" height="240" rx="12"/>
+    </clipPath>
+  </defs>
+  
+  <!-- Background -->
+  <rect x="0" y="0" width="400" height="250" fill="#FAFAF9"/>
+  
+  <!-- Main Image Area -->
+  <rect x="5" y="5" width="390" height="240" rx="12" fill="#1A1A1A"/>
+  
+  <!-- Diagonal Split -->
+  <polygon points="200,5 400,5 200,245 0,245" fill="#E62329" opacity="0.9"/>
+  
+  <!-- Labels -->
+  <text x="100" y="230" font-family="Inter, sans-serif" font-size="12" font-weight="900" fill="#FFFFFF" text-anchor="middle" text-transform="uppercase" letter-spacing="0.25em">BEFORE</text>
+  <text x="300" y="230" font-family="Inter, sans-serif" font-size="12" font-weight="900" fill="#FFFFFF" text-anchor="middle" text-transform="uppercase" letter-spacing="0.25em">AFTER</text>
+  
+  <!-- Divider Line -->
+  <line x1="200" y1="20" x2="200" y2="220" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="5,5"/>
+  
+  <!-- Drag Handle -->
+  <circle cx="200" cy="125" r="20" fill="#121212" stroke="#FFFFFF" stroke-width="3"/>
+  <path d="M192 125 L200 117 L208 125 M192 125 L200 133 L208 125" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+</svg>

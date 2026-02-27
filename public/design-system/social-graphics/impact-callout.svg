@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" width="400" height="160">
+  <defs>
+    <style>
+      .bg { fill: #121212; }
+      .accent { fill: #E62329; }
+      .label { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.3em; fill: #E62329; }
+      .value { font-family: 'Inter', sans-serif; font-size: 56px; font-weight: 900; font-style: italic; letter-spacing: -0.04em; fill: #FFFFFF; }
+    </style>
+  </defs>
+  <g id="Impact-Callout">
+    <g transform="translate(20, 0) skewX(-5)">
+      <rect x="10" y="20" width="340" height="120" class="bg" />
+      <rect x="10" y="20" width="8" height="120" class="accent" />
+    </g>
+    <g id="Text-Content" transform="translate(60, 60)">
+      <text x="0" y="0" class="label">LIMITED TIME OFFER</text>
+      <text x="0" y="55" class="value">AED 1,499</text>
+    </g>
+  </g>
+</svg>

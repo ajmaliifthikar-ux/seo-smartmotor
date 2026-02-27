@@ -1,0 +1,8 @@
+{
+  "track_id": "fix_firebase_migration_20260223",
+  "type": "bug",
+  "status": "new",
+  "created_at": "2026-02-23T00:00:00Z",
+  "updated_at": "2026-02-23T00:00:00Z",
+  "description": "Fix critical issues and security vulnerabilities identified in the Firebase migration code review (hardcoded keys, recursion bugs, auth bypasses)."
+}
